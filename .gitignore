@@ -1,0 +1,14 @@
+
+# Segredos locais e artefatos de desenvolvimento
+.env*
+!.env.docker.example
+node_modules/
+.next/
+coverage/
+test-results/
+playwright-report/
+
+!.env.example
+!.env.test.example
+src/generated/
+*.tsbuildinfo

@@ -1,0 +1,64 @@
+@import './tokens.css';
+
+/* Opt-in component styles. No reset is applied outside [data-hl]. */
+[data-hl] { color-scheme: dark; font-family:var(--hl-font-body); color:var(--hl-color-text); background:var(--hl-color-background); line-height:1.6; -webkit-font-smoothing:antialiased; }
+[data-hl], [data-hl] * { box-sizing:border-box; }
+[data-hl] :where(button,input,select,textarea) { font:inherit; }
+[data-hl] :where(button,a,input,select,textarea,summary):focus-visible { outline:2px solid var(--hl-color-focus); outline-offset:4px; }
+[data-hl] :where(button,a,summary) { touch-action:manipulation; }
+.hl-container { width:min(var(--hl-container), calc(100% - var(--hl-gutter) * 2)); margin-inline:auto; }
+.hl-container--narrow { max-width:var(--hl-container-narrow); }
+.hl-section { padding-block:var(--hl-space-28); }
+.hl-page { padding-block:var(--hl-space-20); }
+.hl-heading { font-family:var(--hl-font-heading); font-weight:750; letter-spacing:-.035em; line-height:1.2; text-wrap:balance; margin:0; }
+.hl-display { font-size:var(--hl-text-display); }
+.hl-title { font-size:var(--hl-text-2xl); }
+.hl-subtitle { font-size:var(--hl-text-xl); }
+.hl-copy { max-width:var(--hl-reading-width); }
+.hl-muted { color:var(--hl-color-text-muted); }
+.hl-mono, .hl-eyebrow { font-family:var(--hl-font-mono); }
+.hl-eyebrow { font-size:var(--hl-text-xs); color:var(--hl-color-primary); text-transform:uppercase; letter-spacing:.12em; }
+.hl-stack { display:flex; flex-direction:column; gap:var(--hl-space-6); }
+.hl-row { display:flex; flex-wrap:wrap; align-items:center; gap:var(--hl-space-4); }
+.hl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:var(--hl-space-6); }
+.hl-button { min-height:var(--hl-control-height); display:inline-flex; align-items:center; justify-content:center; gap:var(--hl-space-3); border:1px solid transparent; border-radius:var(--hl-radius); padding:12px 20px; font-size:var(--hl-text-sm); font-weight:650; text-decoration:none; cursor:pointer; color:var(--hl-color-on-primary); background:var(--hl-color-primary); transition:background var(--hl-duration-fast) ease,border-color var(--hl-duration-fast) ease,transform var(--hl-duration-fast) var(--hl-ease); }
+.hl-button:hover:not(:disabled) { background:var(--hl-color-primary-hover); }
+.hl-button--secondary { background:transparent; border-color:var(--hl-color-control-border); color:var(--hl-color-text); }
+.hl-button--secondary:hover:not(:disabled), .hl-button--ghost:hover:not(:disabled) { background:var(--hl-color-surface-hover); }
+.hl-button--ghost { background:transparent; color:var(--hl-color-text); }
+.hl-button--danger { background:transparent; border-color:var(--hl-color-danger); color:var(--hl-color-danger); }
+.hl-button--danger:hover:not(:disabled) { background:var(--hl-color-surface-hover); }
+.hl-button--compact { min-height:var(--hl-control-height-compact); padding:8px 16px; }
+.hl-button:disabled { opacity:.45; cursor:not-allowed; }
+.hl-link { color:var(--hl-color-primary); text-underline-offset:4px; }
+.hl-link:hover { color:var(--hl-color-primary-hover); }
+.hl-card { padding:var(--hl-space-6); border:1px solid var(--hl-color-border); border-radius:var(--hl-radius); background:var(--hl-color-surface); min-width:0; }
+.hl-card p { margin:12px 0 0; }
+.hl-card--interactive { display:block; text-decoration:none; color:inherit; border-color:var(--hl-color-control-border); transition:transform var(--hl-duration-normal) var(--hl-ease),border-color var(--hl-duration-fast); }
+.hl-card--interactive:hover { border-color:var(--hl-color-primary); }
+.hl-field { display:grid; gap:var(--hl-space-2); font-size:var(--hl-text-sm); }
+.hl-input { width:100%; min-width:0; min-height:var(--hl-control-height); padding:12px 16px; border:1px solid var(--hl-color-control-border); border-radius:var(--hl-radius); background:var(--hl-color-background); color:var(--hl-color-text); }
+.hl-input::placeholder { color:var(--hl-color-text-muted); }
+.hl-input[aria-invalid=true] { border-color:var(--hl-color-danger); }
+.hl-input:disabled { opacity:.45; cursor:not-allowed; }
+.hl-help { margin:0; font-size:var(--hl-text-xs); color:var(--hl-color-text-muted); }
+.hl-error { color:var(--hl-color-danger); }
+.hl-notice { padding:var(--hl-space-6); border:2px solid currentColor; color:var(--hl-color-primary); background:var(--hl-color-surface); }
+.hl-notice--warning { color:var(--hl-color-warning); }
+.hl-notice--error { color:var(--hl-color-danger); }
+.hl-notice--info { color:var(--hl-color-info); }
+.hl-notice p { color:var(--hl-color-text); margin:8px 0 0; }
+.hl-badge { display:inline-flex; gap:8px; align-items:center; border:1px solid currentColor; padding:4px 8px; color:var(--hl-color-primary); font-size:var(--hl-text-xs); }
+.hl-dot { width:6px; height:6px; background:currentColor; border-radius:50%; }
+.hl-table-wrap { overflow:auto; border:1px solid var(--hl-color-border); }
+.hl-table { width:100%; border-collapse:collapse; text-align:left; font-size:var(--hl-text-sm); }
+.hl-table th,.hl-table td { padding:16px; border-bottom:1px solid var(--hl-color-border); }
+.hl-table th { font-weight:500; color:var(--hl-color-text-muted); background:var(--hl-color-surface); }
+.hl-table tr:last-child td { border-bottom:0; }
+.hl-dialog { width:min(560px,calc(100% - 40px)); padding:32px; border:1px solid var(--hl-color-control-border); background:var(--hl-color-surface); color:var(--hl-color-text); }
+.hl-dialog::backdrop { background:rgb(0 0 0 / .75); }
+.hl-skeleton { background:var(--hl-color-surface-raised); min-height:24px; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) { .hl-button:hover:not(:disabled) { transform:translateY(-2px); } .hl-card--interactive:hover { transform:translateY(-3px); } }
+@media(max-width:1023px) { [data-hl] { --hl-gutter:32px; } .hl-section { padding-block:80px; } .hl-page { padding-block:64px; } }
+@media(max-width:640px) { [data-hl] { --hl-gutter:20px; } .hl-section { padding-block:64px; } .hl-page { padding-block:40px; } .hl-card { padding:20px; } }
+@media(prefers-reduced-motion:reduce) { [data-hl] *, [data-hl] *::before, [data-hl] *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }

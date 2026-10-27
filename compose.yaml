@@ -1,0 +1,66 @@
+# Infraestrutura exclusivamente local. Não usar para produção.
+name: h3ldesk-local
+
+services:
+  postgres-dev:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: h3ldesk_dev
+      POSTGRES_USER: h3ldesk_dev
+      POSTGRES_PASSWORD: ${H3LDESK_DEV_DB_PASSWORD:?Configure H3LDESK_DEV_DB_PASSWORD em .env.docker}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql
+    networks:
+      - development
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U h3ldesk_dev -d h3ldesk_dev"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  postgres-test:
+    image: postgres:18
+    profiles: ["test"]
+    environment:
+      POSTGRES_DB: h3ldesk_test
+      POSTGRES_USER: h3ldesk_test
+      POSTGRES_PASSWORD: ${H3LDESK_TEST_DB_PASSWORD:?Configure H3LDESK_TEST_DB_PASSWORD em .env.docker}
+    ports:
+      - "127.0.0.1:55433:5432"
+    tmpfs:
+      - /var/lib/postgresql:rw,size=512m
+    networks:
+      - testing
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U h3ldesk_test -d h3ldesk_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  mail-dev:
+    image: axllent/mailpit:v1.27.11
+    ports:
+      - "127.0.0.1:51025:1025"
+      - "127.0.0.1:58025:8025"
+    networks:
+      - development
+
+  mail-test:
+    image: axllent/mailpit:v1.27.11
+    profiles: ["test"]
+    ports:
+      - "127.0.0.1:51026:1025"
+      - "127.0.0.1:58026:8025"
+    networks:
+      - testing
+
+volumes:
+  postgres-dev-data:
+
+networks:
+  development:
+  testing:

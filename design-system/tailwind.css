@@ -1,0 +1,30 @@
+/* Tailwind v4 adapter. Import tokens.css before this file. */
+@theme inline {
+  --color-background: var(--hl-color-background);
+  --color-foreground: var(--hl-color-text);
+  --color-card: var(--hl-color-surface);
+  --color-card-foreground: var(--hl-color-text);
+  --color-popover: var(--hl-color-surface);
+  --color-popover-foreground: var(--hl-color-text);
+  --color-primary: var(--hl-color-primary);
+  --color-primary-foreground: var(--hl-color-on-primary);
+  --color-primary-hover: var(--hl-color-primary-hover);
+  --color-muted: var(--hl-color-surface-raised);
+  --color-muted-foreground: var(--hl-color-text-muted);
+  --color-secondary: var(--hl-color-surface-hover);
+  --color-secondary-foreground: var(--hl-color-text);
+  --color-accent: var(--hl-color-surface-hover);
+  --color-accent-foreground: var(--hl-color-text);
+  --color-border: var(--hl-color-border);
+  --color-input: var(--hl-color-control-border);
+  --color-ring: var(--hl-color-focus);
+  --color-destructive: var(--hl-color-danger);
+  --font-sans: var(--hl-font-body);
+  --font-heading: var(--hl-font-heading);
+  --font-mono: var(--hl-font-mono);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+}
